@@ -120,31 +120,6 @@ Ou usar uma função de extensão ou outro mecanismo comum, dependendo do seu do
 
 ---
 
-## 4. Exercícios práticos (C#)
-
-1. **Fácil – Caça aos cheiros em um arquivo**
-   - Escolha uma classe sua.
-   - Liste: métodos grandes, nomes ruins, números mágicos, duplicações visíveis.
-
-2. **Fácil/Médio – Eliminar um número mágico**
-   - Procure um número “solto” no código (por exemplo, `if (valor > 1000)`).
-   - Substitua por uma constante ou enum com nome significativo.
-
-3. **Médio – Quebrar um método com cheiro**
-   - Pegue um método grande com muitos `if`s.
-   - Quebre em métodos menores com nomes bons, reduzindo o aninhamento.
-
-4. **Médio/Difícil – Remover duplicação**
-   - Ache dois lugares com código muito parecido.
-   - Extraia para uma função única ou para um objeto/método de domínio comum.
-
-5. **Desafiador – Mapa de cheiros de um módulo**
-   - Escolha um módulo (por exemplo, “Pedidos”).
-   - Faça um mapa dos principais smells: duplicação, classes grandes, métodos gigantes.
-   - Escolha um para atacar com refatorações pequenas e seguras (idealmente com testes de apoio).
-
----
-
 ## 5. Mini-resumo
 
 **Frases-chave:**
