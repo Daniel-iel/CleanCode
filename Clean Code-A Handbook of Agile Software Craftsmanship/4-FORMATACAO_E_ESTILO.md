@@ -108,35 +108,6 @@ if (user.IsAdmin)
 
 ---
 
-## 4. Exercícios práticos (C#)
-
-1. **Fácil – Aplicar formatador automático**
-   - Pegue um arquivo seu com formatação bagunçada e aplique o formatador automático (por exemplo, Ctrl+K, Ctrl+D no Visual Studio).
-   - Observe como a indentação e quebras de linha mudam. Ajuste as configurações se necessário.
-
-2. **Fácil/Médio – Melhorar layout de uma classe**
-   - Escolha uma classe com vários métodos e propriedades.
-   - Reorganize na ordem: campos privados, propriedades, construtores, métodos públicos, métodos privados.
-   - Insira linhas em branco entre membros e entre blocos lógicos internos.
-
-3. **Médio – Padronizar chaves**
-   - Procure no seu projeto estruturas `if`, `for`, `foreach`, `while` sem chaves.
-   - Adicione `{}` em todos e reformatte.
-   - Verifique se algum bug potencial foi evitado (caminhos lógicos que pareciam outra coisa).
-
-4. **Médio/Difícil – Revisar um arquivo grande**
-   - Pegue um arquivo que você considera “pesado” de ler.
-   - Reorganize membros da classe.
-   - Quebre métodos muito longos em funções menores (ligação com o tópico de **Funções**).
-   - Use linhas em branco para separar blocos lógicos.
-
-5. **Desafiador – Criar um padrão de formatação para o projeto**
-   - Defina um conjunto de regras de formatação (indentação, largura de linha, uso de `var`, posição das chaves).
-   - Configure isso no editor ou em um `.editorconfig`.
-   - Aplique ao projeto inteiro e mantenha consistência nos próximos arquivos.
-
----
-
 ## 5. Mini-resumo
 
 **Frases-chave:**
