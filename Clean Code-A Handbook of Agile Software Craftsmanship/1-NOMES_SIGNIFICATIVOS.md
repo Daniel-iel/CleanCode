@@ -125,38 +125,6 @@ public class User
 
 ---
 
-## 4. Exercícios práticos (C#)
-
-Use estes exercícios para praticar. Você pode salvar suas soluções em arquivos separados:
-
-1. **Fácil – Renomear variáveis e métodos**
-   - Crie um método com nomes ruins, por exemplo: `void DoStuff(List<string> l)`.
-   - Renomeie classe, método e variáveis para refletir exatamente o que fazem.
-   - Use a ferramenta de renomear da IDE para não quebrar referências.
-
-2. **Fácil/Médio – Melhorar um método de cálculo**
-   - Crie um método `double C(List<double> p, double d)` que soma preços e aplica desconto.
-   - Renomeie tudo para algo claro: método, parâmetros e variáveis internas.
-   - Extra: crie uma classe `CartItem` (`Price`, `Quantity`) e use bons nomes.
-
-3. **Médio – Código de login legado**
-   - Crie um método `bool X(string a, string b)` que verifica usuário e senha.
-   - Renomeie parâmetros e método para deixar óbvio que são login/senha.
-   - Renomeie variáveis internas e observe como a leitura muda.
-
-4. **Médio/Difícil – Pequeno domínio de fórum**
-   - Modele classes para um fórum: usuário, post, comentário.
-   - Use nomes claros: `ForumUser`, `Post`, `Comment`, `PostService`, etc.
-   - Escolha bons nomes de métodos: `PublishPost`, `AddComment`, `GetPostsByUser`.
-   - Evite termos genéricos como `Do`, `Handle`, `Data`, `Item`.
-
-5. **Desafiador – Refatorar código real seu**
-   - Pegue um arquivo real do seu projeto com nomes ruins.
-   - Liste 5–10 nomes ruins e proponha um nome melhor para cada um.
-   - Aplique as renomeações e rode o projeto/testes para garantir que tudo continua funcionando.
-
----
-
 ## 5. Mini-resumo
 
 **Frases-chave:**
