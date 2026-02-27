@@ -111,30 +111,6 @@ public double CalculateTotal(IEnumerable<IHasPriceAndQuantity> items)
 
 ---
 
-## 4. Exercícios práticos (C#)
-
-1. **Fácil – Renomear e extrair método**
-   - Pegue um método com nomes ruins e um bloco claro de código interno.
-   - Renomeie variáveis/método e extraia esse bloco para um novo método com nome descritivo.
-
-2. **Fácil/Médio – Remover duplicação simples**
-   - Encontre dois trechos quase iguais.
-   - Extraia a parte comum para um método reutilizável.
-
-3. **Médio – Reduzir tamanho de método**
-   - Escolha um método grande.
-   - Liste as responsabilidades internas e quebre em 2–4 métodos menores.
-
-4. **Médio/Difícil – Refatoração guiada por testes**
-   - Escreva testes para uma classe.
-   - Faça uma refatoração moderada (nomes, extração de métodos/classes) garantindo que os testes continuam passando.
-
-5. **Desafiador – Refatorar um módulo com smells**
-   - Escolha um módulo com vários smells (duplicação, métodos grandes, nomes ruins).
-   - Planeje uma sequência de refatorações pequenas, atacando um smell de cada vez, sempre com testes.
-
----
-
 ## 5. Mini-resumo
 
 **Frases-chave:**
