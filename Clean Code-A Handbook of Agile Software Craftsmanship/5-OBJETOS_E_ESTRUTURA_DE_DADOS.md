@@ -139,37 +139,6 @@ Esse tipo de classe:
 
 ---
 
-## 4. Exercícios práticos (C#)
-
-1. **Fácil – Enum + métodos**
-   - Pegue uma classe sua que tenha um `int` ou `string` representando status/tipo (por exemplo, `int Status`).
-   - Crie um `enum` para esse status.
-   - Mude a propriedade para esse `enum`.
-   - Crie métodos em vez de modificar `Status` diretamente (`Activate`, `Deactivate`, `Approve`, etc.).
-
-2. **Fácil/Médio – Separar DTO de Domínio**
-   - Crie um `CreateUserRequest` simples (DTO) com `Name`, `Email`, `Password`.
-   - Crie uma classe `User` de domínio que recebe esses dados no construtor, mas adiciona regra (por exemplo, validação de e-mail, hash de senha).
-   - Note a diferença entre “estrutura de dados” e “objeto com comportamento”.
-
-3. **Médio – Proteger coleções internas**
-   - Pegue uma classe com `public List<T> Items { get; set; }`.
-   - Troque para um campo privado `List<T> _items`.
-   - Exponha `IReadOnlyCollection<T> Items`.
-   - Adicione métodos como `AddItem`, `RemoveItem`, controlando as regras de negócio.
-
-4. **Médio/Difícil – Curar um objeto anêmico**
-   - Encontre uma entidade do seu projeto que só tenha `get/set` e nenhuma lógica.
-   - Liste regras de negócio que hoje estão espalhadas em serviços/helpers que mexem nessa entidade.
-   - Mova essas regras para métodos da própria entidade, escondendo detalhes internos.
-
-5. **Desafiador – Desenhar um mini-domínio**
-   - Modele um mini-domínio de fórum: `ForumUser`, `Post`, `Comment`.
-   - Decida: o que é entidade de domínio rica? O que é apenas DTO (por exemplo, `PostDto` para API)?
-   - Dê métodos de negócio às entidades (por exemplo, `Post.Publish`, `Post.AddComment`) e mantenha DTOs só como “sacos de dados”.
-
----
-
 ## 5. Mini-resumo
 
 **Frases-chave:**
