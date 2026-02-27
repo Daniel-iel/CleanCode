@@ -187,37 +187,6 @@ private void EnsureOrderCanBeProcessed(Order order)
 
 ---
 
-## 4. Exercícios práticos (C#)
-
-1. **Fácil – Trocar `Exception` genérico por específico**
-   - Encontre um lugar do seu código que usa `throw new Exception(...)`.
-   - Substitua por uma exceção mais adequada (`ArgumentException`, `InvalidOperationException`, exceção customizada) com mensagem melhor.
-
-2. **Fácil/Médio – Não engolir exceção**
-   - Procure `catch (Exception)` sem rethrow ou sem tratamento claro.
-   - Decida se deve deixar a exceção subir, logar e lançar novamente (`throw;`) ou converter para uma exceção/resultado mais específico.
-
-3. **Médio – `TryXxx` vs exceção**
-   - Implemente duas versões de um método que busca um usuário:
-     - `GetUser(int id)` que lança se não encontrar.
-     - `TryGetUser(int id, out User user)` que retorna `false` se não encontrar.
-   - Compare em quais cenários cada estilo fica mais limpo.
-
-4. **Médio/Difícil – Camada de API**
-   - Imagine um endpoint `GET /orders/{id}`.
-   - No domínio, `GetOrder` pode lançar `OrderNotFoundException`.
-   - Escreva um handler que capture essa exceção e converta em `404 Not Found`, enquanto erros inesperados viram `500` com log adequado.
-
-5. **Desafiador – Revisão de tratamento de erros em módulo**
-   - Pegue um módulo inteiro (por exemplo, “Pedidos”).
-   - Faça um “tour de exceções”:
-     - Quais são genéricas demais?
-     - Onde erros são engolidos?
-     - Onde retornos nulos poderiam ser melhor representados?
-   - Proponha e implemente um padrão consistente de tratamento.
-
----
-
 ## 5. Mini-resumo
 
 **Frases-chave:**
