@@ -215,33 +215,6 @@ private void SaveOrder(Order order)
 
 ---
 
-## 4. Exercícios práticos (C#)
-
-1. **Fácil – Quebrar uma função grande em duas**
-   - Crie uma função que lê dados de uma lista, filtra, calcula uma soma e imprime o resultado, tudo em um método só.
-   - Quebre em funções menores (`Filter...`, `Calculate...`, `Print...`) e deixe a função principal apenas orquestrando.
-
-2. **Fácil/Médio – Parâmetros demais**
-   - Crie um método com 5–6 parâmetros (por exemplo, dados de um pedido).
-   - Crie uma classe `OrderRequest` (ou similar) e passe um único objeto como parâmetro.
-   - Veja se a responsabilidade do método continua clara ou se faz sentido dividir em dois.
-
-3. **Médio – Boolean flag**
-   - Crie um método `GenerateReport(bool detailed)` que se comporta de forma bem diferente dependendo do valor de `detailed`.
-   - Divida em dois métodos: `GenerateDetailedReport()` e `GenerateSummaryReport()`.
-   - Compare: qual versão é mais fácil de entender sem olhar o corpo?
-
-4. **Médio/Difícil – Refatorar um método real seu**
-   - Pegue um método do seu projeto que você considera grande ou confuso.
-   - Liste as responsabilidades que ele tem (validação, cálculo, log, persistência, etc.).
-   - Quebre em funções menores com nomes claros, mantendo o comportamento externo.
-
-5. **Desafiador – Funções e nomes juntos**
-   - Reescreva uma classe simples (`OrderService`, `UserService`, etc.) melhorando **nomes e funções** ao mesmo tempo.
-   - Tente deixar cada método pequeno e tão claro que quase não precise de comentários.
-
----
-
 ## 5. Mini-resumo
 
 **Frases-chave:**
