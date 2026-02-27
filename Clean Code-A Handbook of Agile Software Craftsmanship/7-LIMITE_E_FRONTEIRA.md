@@ -163,36 +163,6 @@ Agora o domínio só conhece `IEmailSender`, não o SDK externo. Se trocar de pr
 
 ---
 
-## 4. Exercícios práticos (C#)
-
-1. **Fácil – Extrair interface para uma integração**
-   - Pegue um lugar do seu código que usa diretamente uma lib externa (cliente HTTP, SDK de pagamento, acesso a arquivo, etc.).
-   - Crie uma interface (por exemplo, `IPaymentGateway`, `IFileStorage`) e implemente um adapter que usa a lib.
-   - Faça o restante do código depender só da interface.
-
-2. **Fácil/Médio – Isolar acesso a banco**
-   - Se você usa `DbContext` direto em várias classes, escolha uma delas.
-   - Extraia um repositório (`IUserRepository`, `IOrderRepository`) e mova o uso de `DbContext` para lá.
-   - Faça o serviço de domínio receber apenas o repositório via injeção de dependência.
-
-3. **Médio – Converter DTO na borda**
-   - Escolha um endpoint ou handler que passa DTOs direto pelo domínio.
-   - Mova toda conversão de DTO → entidade de domínio para um único ponto (por exemplo, um serviço de aplicação).
-   - Garanta que o domínio não dependa mais da classe de DTO.
-
-4. **Médio/Difícil – Testar domínio sem infraestrutura**
-   - Escolha uma regra de negócio que hoje só dá para testar usando banco/API real.
-   - Refaça a modelagem de forma que a lógica crítica esteja em classes que dependem apenas de interfaces e tipos de domínio.
-   - Escreva testes unitários usando fakes/mocks para as interfaces de fronteira.
-
-5. **Desafiador – Mapear fronteiras de um módulo**
-   - Pegue um módulo (por exemplo, “Usuários” ou “Pedidos”).
-   - Liste todas as dependências externas (banco, cache, fila, APIs, libs).
-   - Para cada uma, defina: qual é a “porta” (interface) e onde fica o adaptador concreto.
-   - Refatore aos poucos para respeitar esse desenho.
-
----
-
 ## 5. Mini-resumo
 
 **Frases-chave:**
