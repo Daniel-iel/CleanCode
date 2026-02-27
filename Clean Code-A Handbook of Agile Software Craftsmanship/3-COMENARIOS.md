@@ -171,34 +171,6 @@ Se for relevante, pode haver um comentário curto explicando a decisão arquitet
 
 ---
 
-## 4. Exercícios práticos (C#)
-
-1. **Fácil – Limpar comentários redundantes**
-   - Pegue uma classe do seu projeto com vários comentários descritivos óbvios.
-   - Remova comentários redundantes e veja se consegue deixar o código mais claro só com renomeação de métodos/variáveis.
-
-2. **Fácil/Médio – Transformar comentário em código melhor**
-   - Crie um método com um comentário tipo: `// verifica se o usuário é administrador e está ativo`.
-   - Remova o comentário e extraia a lógica para um método `UserIsActiveAdmin()` (ou similar), bem nomeado.
-
-3. **Médio – Documentar uma regra de negócio estranha**
-   - Imagine (ou use real) uma regra “esquisita” de negócio, por exemplo: "Se o cliente é do tipo X e fizer pedido às sextas, aplicar desconto Y por causa de contrato antigo".
-   - Implemente a regra com nomes claros e adicione um comentário curto explicando o contexto de negócio.
-
-4. **Médio/Difícil – Limpar código comentado**
-   - Ache um arquivo do seu projeto com trechos de código comentado.
-   - Apague o código comentado.
-   - Se alguma parte tiver contexto importante, transforme em um comentário curto e claro (sem colar o código antigo).
-   - Garanta que o repositório está versionado (git), para não perder histórico real.
-
-5. **Desafiador – Revisão de comentários de um módulo**
-   - Escolha um módulo (pasta, namespace) inteiro do seu projeto.
-   - Revise todos os comentários.
-   - Classifique mentalmente: “útil” (contexto, regra estranha) x “ruído” (redundante, desatualizado).
-   - Apague ou atualize os ruins; mantenha e melhore os bons.
-
----
-
 ## 5. Mini-resumo
 
 **Frases-chave:**
