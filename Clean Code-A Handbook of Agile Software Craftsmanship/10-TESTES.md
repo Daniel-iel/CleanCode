@@ -69,28 +69,6 @@ public void CalculateTotal_ShouldApplyDiscount_WhenDiscountRateIsProvided()
 
 ---
 
-## 4. Exercícios práticos (C#)
-
-1. **Fácil – Nomear melhor um teste**
-   - Pegue um teste chamado `Test1`, `ShouldDoWork` ou similar.
-   - Renomeie para deixar explícito o cenário e o resultado esperado.
-
-2. **Fácil/Médio – AAA explícito**
-   - Reescreva um teste seu separando claramente Arrange / Act / Assert (comentários ou blocos).
-
-3. **Médio – Testar lógica sem infraestrutura**
-   - Pegue uma função de domínio (por exemplo, cálculo de total, regras de desconto) e escreva testes **sem** usar banco ou HTTP.
-
-4. **Médio/Difícil – Diminuir fragilidade**
-   - Encontre um teste que quebra com frequência por detalhes internos (ordem de lista, mensagens exatas, etc.).
-   - Ajuste o teste para focar no comportamento relevante, não em detalhes irrelevantes.
-
-5. **Desafiador – Cobrir cenário de refatoração**
-   - Escolha uma classe com lógica importante e escreva testes cobrindo casos típicos e de borda.
-   - Em seguida, refatore a classe (melhore nomes, quebre funções) garantindo que os testes continuem verdes.
-
----
-
 ## 5. Mini-resumo
 
 **Frases-chave:**
