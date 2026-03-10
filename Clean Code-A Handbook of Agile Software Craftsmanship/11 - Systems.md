@@ -39,15 +39,14 @@ public class OrderService
 
 Problemas:
 
-Dependência concreta
+- Dependência concreta
+- Difícil testar
+- Difícil substituir implementação
+- Forte acoplamento à infraestrutura
 
-Difícil testar
+### ✅ Usando Injeção de Dependência
 
-Difícil substituir implementação
-
-Forte acoplamento à infraestrutura
-
-✅ Usando Injeção de Dependência
+```csharp
 public class OrderService
 {
     private readonly IEmailService _emailService;
@@ -62,38 +61,39 @@ public class OrderService
         _emailService.Send(order.Customer.Email);
     }
 }
+```
 
 Agora:
 
-Baixo acoplamento
+- Baixo acoplamento
+- Fácil de testar
+- Domínio desacoplado da infraestrutura
 
-Fácil de testar
-
-Domínio desacoplado da infraestrutura
-
-🏗 2. Composição na Raiz da Aplicação
+## 🏗 2. Composição na Raiz da Aplicação
 
 A criação concreta das dependências deve acontecer na inicialização do sistema.
 
+```csharp
 var services = new ServiceCollection();
 
 services.AddScoped<IEmailService, EmailService>();
 services.AddScoped<OrderService>();
+```
 
-Essa é a “raiz” do sistema (composition root).
+Essa é a "raiz" do sistema (composition root).
 
 O domínio não deve saber como as dependências são criadas.
 
-🔄 3. Princípio da Inversão de Dependência (DIP)
+## 🔄 3. Princípio da Inversão de Dependência (DIP)
 
 Regra fundamental:
 
-Módulos de alto nível não devem depender de módulos de baixo nível.
-
-Ambos devem depender de abstrações.
+> Módulos de alto nível não devem depender de módulos de baixo nível.
+> Ambos devem depender de abstrações.
 
 Exemplo:
 
+```csharp
 public interface IUserRepository
 {
     User Find(int id);
@@ -103,23 +103,21 @@ public interface IUserRepository
 O domínio depende da interface,
 não da implementação concreta.
 
-🧩 4. Cross-Cutting Concerns
+## 🧩 4. Cross-Cutting Concerns
 
 Alguns comportamentos atravessam várias partes do sistema:
 
-Logging
-
-Segurança
-
-Cache
-
-Transações
-
-Monitoramento
+- Logging
+- Segurança
+- Cache
+- Transações
+- Monitoramento
 
 Eles não devem poluir regras de negócio.
 
-❌ Poluindo a lógica
+### ❌ Poluindo a lógica
+
+```csharp
 public void Process(Order order)
 {
     _logger.Log("Iniciando processamento");
@@ -128,57 +126,51 @@ public void Process(Order order)
 
     _logger.Log("Finalizado processamento");
 }
+```
 
 Melhor solução:
 
-Middleware
-
-Decorators
-
-Interceptors
-
-Aspect-Oriented Programming
+- Middleware
+- Decorators
+- Interceptors
+- Aspect-Oriented Programming
 
 Separar infraestrutura do domínio mantém o código limpo.
 
-📦 5. Arquitetura Deve Emergir
+## 📦 5. Arquitetura Deve Emergir
 
 Não superprojete arquitetura antes da necessidade real.
 
 Fluxo recomendado:
 
-Comece simples
-
-Escreva testes
-
-Refatore
-
-Extraia abstrações quando necessário
+1. Comece simples
+2. Escreva testes
+3. Refatore
+4. Extraia abstrações quando necessário
 
 Arquitetura excessiva precoce gera rigidez.
 
-🧱 6. Separação em Camadas
+## 🧱 6. Separação em Camadas
 
 Arquitetura comum:
 
-Apresentação
-
-Aplicação
-
-Domínio
-
-Infraestrutura
+- Apresentação
+- Aplicação
+- Domínio
+- Infraestrutura
 
 Regra importante:
 
-Domínio não depende de Infraestrutura.
-Infraestrutura depende do Domínio.
+> Domínio não depende de Infraestrutura.
+> Infraestrutura depende do Domínio.
 
-🔍 7. Evite Misturar Configuração com Regra de Negócio
+## 🔍 7. Evite Misturar Configuração com Regra de Negócio
 
 Configuração deve ficar fora das classes de domínio.
 
-❌ Mistura inadequada
+### ❌ Mistura inadequada
+
+```csharp
 public class PaymentService
 {
     private readonly string _connectionString = 
@@ -189,7 +181,11 @@ public class PaymentService
         // lógica de negócio
     }
 }
-✅ Correto
+```
+
+### ✅ Correto
+
+```csharp
 public class PaymentService
 {
     private readonly IDatabase _database;
@@ -204,31 +200,25 @@ public class PaymentService
         // lógica de negócio
     }
 }
-🏕 Regra Prática
+```
+## 🏕 Regra Prática
 
 Sistemas limpos:
 
-Separam construção de uso
+- Separam construção de uso
+- Dependem de abstrações
+- Isolam infraestrutura
+- Permitem evolução incremental
+- Mantêm o domínio protegido
 
-Dependem de abstrações
-
-Isolam infraestrutura
-
-Permitem evolução incremental
-
-Mantêm o domínio protegido
-
-🎯 Conclusão
+## 🎯 Conclusão
 
 Este capítulo ensina que:
 
-Arquitetura é responsabilidade contínua.
-
-Construção deve ser separada da lógica.
-
-Injeção de dependência reduz acoplamento.
-
-Sistemas bem projetados protegem o domínio.
+- Arquitetura é responsabilidade contínua.
+- Construção deve ser separada da lógica.
+- Injeção de dependência reduz acoplamento.
+- Sistemas bem projetados protegem o domínio.
 
 Código limpo em nível de sistema
 é arquitetura disciplinada e evolutiva.

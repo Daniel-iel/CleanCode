@@ -68,8 +68,11 @@ public decimal CalculateDiscountedTotal(Order order)
 
     return total * 0.9m;
 }
+```
 
-✅ Refatorado
+## ✅ Refatorado
+
+```csharp
 private decimal SumItems(Order order)
 {
     return order.Items.Sum(i => i.Price * i.Quantity);
@@ -84,25 +87,36 @@ public decimal CalculateDiscountedTotal(Order order)
 {
     return SumItems(order) * 0.9m;
 }
+```
 
 Agora a regra de cálculo está centralizada.
 
-🧭 4. Regra 3 — Expressividade
+## 🧭 4. Regra 3 — Expressividade
 
 O código deve dizer claramente o que faz.
 
-❌ Pouco expressivo
+### ❌ Pouco expressivo
+
+```csharp
 if (user.Type == 2)
-✅ Expressivo
+```
+
+### ✅ Expressivo
+
+```csharp
 if (user.IsPremium())
+```
 
 Ou melhor ainda:
 
+```csharp
 public bool IsPremium()
 {
     return Type == UserType.Premium;
 }
-📉 5. Regra 4 — Minimize Classes e Métodos
+```
+
+## 📉 5. Regra 4 — Minimize Classes e Métodos
 
 Não crie abstrações desnecessárias.
 
@@ -114,62 +128,47 @@ Não compacte demais a ponto de perder clareza.
 
 Equilíbrio é essencial.
 
-🔄 6. Refatoração Contínua
+## 🔄 6. Refatoração Contínua
 
 Fluxo ideal:
 
-Escreva teste
-
-Faça passar
-
-Refatore
-
-Simplifique
+1. Escreva teste
+2. Faça passar
+3. Refatore
+4. Simplifique
 
 Refatoração constante evita:
 
-Rigidez
+- Rigidez
+- Complexidade acumulada
+- Degradação do design
 
-Complexidade acumulada
-
-Degradação do design
-
-🧱 7. Pequenas Melhorias Constantes
+## 🧱 7. Pequenas Melhorias Constantes
 
 Não espere por uma "grande refatoração".
 
 Aplique melhorias incrementais:
 
-Renomeie variáveis
+- Renomeie variáveis
+- Extraia métodos
+- Remova duplicação
+- Simplifique condicionais
 
-Extraia métodos
-
-Remova duplicação
-
-Simplifique condicionais
-
-🏕 Regra Prática
+## 🏕 Regra Prática
 
 Design limpo emerge quando:
 
-Você escreve testes antes
+- Você escreve testes antes
+- Refatora sem medo
+- Remove duplicação imediatamente
+- Simplifica sempre que possível
 
-Refatora sem medo
-
-Remove duplicação imediatamente
-
-Simplifica sempre que possível
-
-🎯 Conclusão
+## 🎯 Conclusão
 
 Este capítulo ensina que:
 
-Bom design não é planejado em excesso.
-
-Ele emerge através de disciplina.
-
-Testes permitem evolução segura.
-
-Duplicação é o maior inimigo.
-
-Simplicidade é a meta final.
+- Bom design não é planejado em excesso.
+- Ele emerge através de disciplina.
+- Testes permitem evolução segura.
+- Duplicação é o maior inimigo.
+- Simplicidade é a meta final.

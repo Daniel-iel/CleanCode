@@ -2,131 +2,236 @@
 
 ## 🎯 Ideia Central
 
-"Code Smells" são indicadores superficiais de problemas mais profundos no código.
+Este capítulo apresenta uma coleção de **code smells (cheiros de código)** e **heurísticas** que ajudam a identificar problemas de design.
 
-Não são bugs ou erros.
+Heurísticas não são regras absolutas,
+mas **orientações práticas** para reconhecer código ruim.
 
-São sinais de que algo pode estar errado
-
-e que você deve investigar.
+> Código limpo muitas vezes é reconhecido pelo que ele evita.
 
 ---
 
-## 🧠 Tipos de Code Smells
+## 🧠 1. Comentários Desnecessários
 
-### 1. Duplicação
+Comentários podem indicar que o código não está claro.
 
-Código duplicado é um dos piores "smells".
-
-❌ Código duplicado
+## ❌ Comentário explicando código confuso
 
 ```csharp
-public decimal CalculateTotal(Order order)
+// verifica se o usuário é premium
+if (user.Type == 2)
+
+```
+
+### ✅ Código autoexplicativo
+
+```csharp
+if (user.IsPremium())
+```
+
+Código bem escrito reduz necessidade de comentários.
+
+## 🧩 2. Duplicação de Código
+
+Duplicação aumenta risco de inconsistência.
+
+### ❌ Código duplicado
+
+```csharp
+public decimal CalculateOrderTotal(Order order)
 {
     decimal total = 0;
+
     foreach (var item in order.Items)
     {
         total += item.Price * item.Quantity;
     }
+
     return total;
 }
 
-public decimal CalculateDiscountedTotal(Order order)
+public decimal CalculateInvoiceTotal(Invoice invoice)
 {
     decimal total = 0;
-    foreach (var item in order.Items)
+
+    foreach (var item in invoice.Items)
     {
         total += item.Price * item.Quantity;
     }
-    return total * 0.9m;
+
+    return total;
 }
 ```
 
-✅ Refatorado
+### ✅ Extraindo lógica comum
 
 ```csharp
-private decimal SumItems(Order order)
+private decimal CalculateTotal(IEnumerable<Item> items)
 {
-    return order.Items.Sum(i => i.Price * i.Quantity);
+    return items.Sum(i => i.Price * i.Quantity);
 }
-
-public decimal CalculateTotal(Order order) => SumItems(order);
-
-public decimal CalculateDiscountedTotal(Order order) => SumItems(order) * 0.9m;
 ```
 
-Duplicação amplia a necessidade de manutenção.
+## 📏 3. Funções Muito Longas
 
----
+Funções devem ser pequenas e focadas.
 
-### 2. Nomes Ruins
-
-Nomes pouco expressivos dificultam compreensão.
-
----
-
-### 3. Funções Longas
-
-Funções devem ser pequenas (máximo 20-30 linhas).
-
----
-
-### 4. Muitos Parâmetros
-
-Mais de 3 parâmetros é um "smell".
-
----
-
-### 5. Comentários Desnecessários
-
-Se o código precisa de comentário para explica-lo,
-
-o código está ruim.
-
----
-
-### 6. Classes Grandes
-
-Classes com muitas responsabilidades são frágeis.
-
----
-
-### 7. Mudanças Frequentes
-
-Se um arquivo muda frequentemente,
-
-talvez precisa ser dividido.
-
----
-
-### 8. Condicionais Complexas
-
-Muitos if/else indica lógica demais.
-
-❌ Código com complexidade elevada
+### ❌ Função grande
 
 ```csharp
-if (user.IsAdmin && user.IsActive && user.Department == "Finance")
+public void ProcessOrder(Order order)
 {
-    // ação
+    Validate(order);
+    CalculateTaxes(order);
+    Save(order);
+    SendEmail(order);
+    UpdateInventory(order);
 }
 ```
 
-✅ Código mais legível
+Essa função possui muitas responsabilidades.
+
+### ✅ Dividindo responsabilidades
 
 ```csharp
-if (user.CanProcessPayments())
+public void ProcessOrder(Order order)
 {
-    // ação
+    ValidateOrder(order);
+    FinalizeOrder(order);
+}
+```
+## 🧱 4. Muitos Parâmetros
+
+Funções com muitos parâmetros são difíceis de entender.
+
+### ❌
+
+```csharp
+public void CreateUser(string name, string email, string phone, string address, string role)
+```
+
+### ✅ Usando objeto
+
+```csharp
+public void CreateUser(User user)
+```
+## 🔄 5. Condicionais Complexas
+
+Condicionais grandes indicam oportunidade de polimorfismo.
+
+### ❌ Muitos ifs
+
+```csharp
+if (user.Type == "Admin")
+{
+    AccessAdminPanel();
+}
+else if (user.Type == "Manager")
+{
+    AccessManagerPanel();
 }
 ```
 
----
+### ✅ Polimorfismo
+
+```csharp
+public interface IUser
+{
+    void AccessPanel();
+}
+```
+
+Cada tipo implementa seu próprio comportamento.
+
+## 🧪 6. Testes Frágeis
+
+Testes ruins:
+
+- Dependem de outros testes
+- Usam dados externos
+- São difíceis de entender
+
+Testes devem ser:
+
+- Independentes
+- Simples
+- Determinísticos
+
+## 🧩 7. Classes Muito Grandes
+
+Classes grandes geralmente violam o princípio da responsabilidade única.
+
+### ❌ Classe multifuncional
+
+```csharp
+public class UserManager
+{
+    public void CreateUser() {}
+    public void SendEmail() {}
+    public void GenerateReport() {}
+}
+```
+
+### ✅ Separação de responsabilidades
+
+- `UserService`
+- `EmailService`
+- `ReportService`
+## 🔍 8. Nomes Ruins
+
+Nomes ruins aumentam complexidade cognitiva.
+
+### ❌
+
+```csharp
+int d;
+string s;
+```
+
+### ✅
+
+```csharp
+int daysSinceLastLogin;
+string customerEmail;
+```
+
+Nomes devem comunicar intenção.
+
+## ⚠️ 9. Código Morto
+
+Código não utilizado deve ser removido.
+
+### ❌
+
+```csharp
+// antigo cálculo de desconto
+// decimal discount = total * 0.1m;
+```
+
+Controle de versão já mantém histórico.
+
+## 🏕 10. Heurísticas Gerais
+
+Algumas heurísticas importantes:
+
+- Prefira composição em vez de herança
+- Evite funções com múltiplas responsabilidades
+- Elimine duplicação
+- Use nomes claros
+- Escreva testes simples
+- Refatore constantemente
 
 ## 🎯 Conclusão
 
-Code Smells são sinais de alerta.
+Este capítulo serve como um guia prático de revisão de código.
 
-Quando os identifica, refatore.
+Principais ideias:
 
-Refatoração constante evita acúmulo de problemas.
+- Code smells ajudam a identificar problemas de design
+- Código limpo evita complexidade desnecessária
+- Refatoração constante melhora qualidade
+- Heurísticas ajudam a tomar boas decisões de design
+
+Código limpo não é apenas sobre seguir regras,
+mas sobre escrever software que seja fácil de entender,
+manter e evoluir.

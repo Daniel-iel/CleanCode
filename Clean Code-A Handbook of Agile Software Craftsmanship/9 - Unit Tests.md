@@ -45,7 +45,9 @@ public void Should_Save_User_In_Database()
 }
 ```
 
-✅ Teste rápido com mock
+### ✅ Teste rápido com mock
+
+```csharp
 [Fact]
 public void Should_Call_Save_Method()
 {
@@ -56,35 +58,34 @@ public void Should_Call_Save_Method()
 
     mockRepo.Verify(r => r.Save(It.IsAny<User>()), Times.Once);
 }
-📏 3. F.I.R.S.T
+```
+
+## 📏 3. F.I.R.S.T
 
 Testes devem ser:
 
-Fast (Rápidos)
+- **F**ast (Rápidos)
+- **I**ndependent (Independentes)
+- **R**epeatable (Repetíveis)
+- **S**elf-validating (Auto verificáveis)
+- **T**imely (Escritos antes do código)
 
-Independent (Independentes)
-
-Repeatable (Repetíveis)
-
-Self-validating (Auto verificáveis)
-
-Timely (Escritos antes do código)
-
-🧩 4. Independentes
+## 🧩 4. Independentes
 
 Um teste não deve depender de outro.
 
-❌
+### ❌
 
-Teste A cria usuário
-Teste B depende do usuário criado
+- Teste A cria usuário
+- Teste B depende do usuário criado
 
 Isso gera fragilidade.
 
-✅
+### ✅
 
 Cada teste prepara seu próprio cenário.
 
+```csharp
 [Fact]
 public void Should_Calculate_Total()
 {
@@ -95,24 +96,35 @@ public void Should_Calculate_Total()
 
     Assert.Equal(20, total);
 }
-🔍 5. Testes Devem Ser Legíveis
+```
+
+## 🔍 5. Testes Devem Ser Legíveis
 
 Testes são documentação executável.
 
-❌ Teste confuso
+### ❌ Teste confuso
+
+```csharp
 Assert.True(service.Process(user, true, false, 3));
-✅ Teste claro
+```
+
+### ✅ Teste claro
+
+```csharp
 var result = service.ProcessPremiumUser(user);
 
 Assert.True(result.IsApproved);
+```
 
 Clareza > Compactação.
 
-🧪 6. Um Conceito por Teste
+## 🧪 6. Um Conceito por Teste
 
 Evite testar múltiplos comportamentos no mesmo teste.
 
-❌
+### ❌
+
+```csharp
 [Fact]
 public void Should_Process_Order()
 {
@@ -120,14 +132,17 @@ public void Should_Process_Order()
     Assert.Equal(100, order.CalculateTotal());
     Assert.True(order.IsPaid());
 }
-✅
+```
+
+### ✅
 
 Um teste por comportamento.
 
-🧱 7. Use Padrão AAA
+## 🧱 7. Use Padrão AAA
 
 Arrange – Act – Assert
 
+```csharp
 [Fact]
 public void Should_Apply_Discount_For_Premium_User()
 {
@@ -141,37 +156,34 @@ public void Should_Apply_Discount_For_Premium_User()
     // Assert
     Assert.Equal(90, total);
 }
+```
 
 Organização clara facilita manutenção.
 
-🔄 8. Evite Lógica Complexa nos Testes
+## 🔄 8. Evite Lógica Complexa nos Testes
 
 Testes devem ser simples.
 
 Se o teste tem lógica complexa,
 ele pode esconder bugs.
 
-🏕 9. Código de Teste Também Deve Ser Limpo
+## 🏕 9. Código de Teste Também Deve Ser Limpo
 
 Testes sujos são tão prejudiciais quanto código sujo.
 
-Refatore testes.
-Elimine duplicação.
-Mantenha clareza.
+- Refatore testes.
+- Elimine duplicação.
+- Mantenha clareza.
 
-🎯 Conclusão
+## 🎯 Conclusão
 
 Este capítulo ensina que:
 
-Testes são parte essencial do design.
-
-Testes devem ser rápidos e independentes.
-
-Testes devem ser claros e simples.
-
-Testes permitem refatoração segura.
-
-Código de teste também precisa ser limpo.
+- Testes são parte essencial do design.
+- Testes devem ser rápidos e independentes.
+- Testes devem ser claros e simples.
+- Testes permitem refatoração segura.
+- Código de teste também precisa ser limpo.
 
 Sem testes, não há segurança.
 Sem segurança, não há evolução sustentável.

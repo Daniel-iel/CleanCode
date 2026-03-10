@@ -32,13 +32,13 @@ public class User
 
 Problemas:
 
-Dados expostos
+- Dados expostos
+- Sem controle de consistência
+- Violação de encapsulamento
 
-Sem controle de consistência
+### ✅ Objeto com Encapsulamento
 
-Violação de encapsulamento
-
-✅ Objeto com Encapsulamento
+```csharp
 public class User
 {
     public string Name { get; }
@@ -58,95 +58,106 @@ public class User
         Email = newEmail;
     }
 }
+```
 
 Agora:
 
-Estado protegido
+- Estado protegido
+- Regras aplicadas internamente
+- Maior segurança
 
-Regras aplicadas internamente
-
-Maior segurança
-
-📦 2. Estruturas de Dados
+## 📦 2. Estruturas de Dados
 
 Estruturas de dados são simples contêineres.
 
 Elas apenas carregam informações.
 
-✅ DTO (Data Transfer Object)
+### ✅ DTO (Data Transfer Object)
+
+```csharp
 public class UserDto
 {
     public string Name { get; set; }
     public string Email { get; set; }
 }
+```
 
 Aqui é aceitável expor dados,
 porque o objetivo é transporte, não comportamento.
 
-🔁 3. Lei de Demeter (Princípio do Menor Conhecimento)
+## 🔁 3. Lei de Demeter (Princípio do Menor Conhecimento)
 
 Um método deve conversar apenas com:
 
-Ele mesmo
-
-Seus campos
-
-Seus parâmetros
-
-Objetos que ele cria
+- Ele mesmo
+- Seus campos
+- Seus parâmetros
+- Objetos que ele cria
 
 Evite cadeias longas.
 
-❌ Violação da Lei de Demeter
+### ❌ Violação da Lei de Demeter
+
+```csharp
 var city = order.Customer.Address.City;
+```
 
 O código conhece demais a estrutura interna.
 
-✅ Melhor abordagem
+### ✅ Melhor abordagem
+
+```csharp
 var city = order.GetCustomerCity();
+```
 
 Dentro da classe Order:
 
+```csharp
 public string GetCustomerCity()
 {
     return Customer.Address.City;
 }
+```
 
 Agora o encapsulamento é preservado.
 
-⚖️ 4. Objetos vs Estruturas de Dados
+## ⚖️ 4. Objetos vs Estruturas de Dados
 
 Existe uma tensão natural:
 
-Objetos	Estruturas de Dados
-Fáceis de adicionar novos tipos	Fáceis de adicionar novas operações
-Difícil adicionar novas operações	Difícil adicionar novos tipos
-Baseados em comportamento	Baseados em dados
+| Objetos | Estruturas de Dados |
+|---------|--------------------|
+| Fáceis de adicionar novos tipos | Fáceis de adicionar novas operações |
+| Difícil adicionar novas operações | Difícil adicionar novos tipos |
+| Baseados em comportamento | Baseados em dados |
 
 Escolha depende do contexto.
 
-🧩 5. Data Transfer Objects (DTOs)
+## 🧩 5. Data Transfer Objects (DTOs)
 
 DTOs são úteis para:
 
-Comunicação entre camadas
-
-APIs
-
-Serialização
+- Comunicação entre camadas
+- APIs
+- Serialização
 
 Mas não devem conter lógica de negócio.
 
-❌ Modelo Anêmico
+### ❌ Modelo Anêmico
+
+```csharp
 public class Order
 {
     public decimal Total { get; set; }
 }
+```
 
 Se a lógica de cálculo está fora da classe,
 isso pode indicar problema de design.
 
-✅ Modelo Rico
+### ✅ Modelo Rico
+
+```csharp
 public class Order
 {
     private readonly List<OrderItem> _items = new();
@@ -156,16 +167,23 @@ public class Order
         return _items.Sum(i => i.Price * i.Quantity);
     }
 }
+```
 
 Agora o comportamento pertence ao objeto.
 
-🧭 6. Anti-Padrão: Getters/Setters Excessivos
+## 🧭 6. Anti-Padrão: Getters/Setters Excessivos
 
 Expor tudo via getter/setter não é encapsulamento real.
 
-❌
+### ❌
+
+```csharp
 public decimal Balance { get; set; }
-✅
+```
+
+### ✅
+
+```csharp
 public void Deposit(decimal amount)
 {
     if (amount <= 0)
@@ -173,28 +191,25 @@ public void Deposit(decimal amount)
 
     _balance += amount;
 }
+```
 
 Regras devem estar dentro do objeto.
 
-🏕 Regra Prática
+## 🏕 Regra Prática
 
 Se você está manipulando dados externamente → talvez precise de um objeto.
 
 Se está apenas transportando dados → estrutura simples é suficiente.
 
-🎯 Conclusão
+## 🎯 Conclusão
 
 Este capítulo ensina:
 
-Objetos escondem dados.
-
-Estruturas de dados expõem dados.
-
-Encapsulamento protege invariantes.
-
-Lei de Demeter reduz acoplamento.
-
-Modelos ricos são mais robustos que modelos anêmicos.
+- Objetos escondem dados.
+- Estruturas de dados expõem dados.
+- Encapsulamento protege invariantes.
+- Lei de Demeter reduz acoplamento.
+- Modelos ricos são mais robustos que modelos anêmicos.
 
 Design limpo começa com decisões claras
 sobre quem possui o comportamento.

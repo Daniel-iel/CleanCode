@@ -83,7 +83,7 @@ public void Proc(int x)
 }
 ```
 
-## Problemas
+### Problemas
 
 - Nome genérico
 - Intenção pouco clara
@@ -104,16 +104,16 @@ private string GetApprovalMessage(int statusCode)
 }
 ```
 
-## Melhorias
+### Melhorias
 
 - Nome expressivo
 - Separação de responsabilidade
 - Fácil manutenção
 - Melhor legibilidade
 
-🔥 Exemplo com Polimorfismo
+## 🔥 Exemplo com Polimorfismo
 
-## ❌ Código com múltiplas responsabilidades
+### ❌ Código com múltiplas responsabilidades
 
 ```csharp
 public void SaveUser(User user)
@@ -132,7 +132,7 @@ public void SaveUser(User user)
 }
 ```
 
-## ✅ Código mais limpo e extensível
+### ✅ Código mais limpo e extensível
 
 ```csharp
 public void SaveUser(User user)
@@ -165,14 +165,16 @@ public class RegularUser : User
 }
 ```
 
-## Benefícios
+### Benefícios
 
 - Uso de polimorfismo
 - Extensibilidade
 - Responsabilidades bem definidas
 - Menos condicionais complexas
 
-🏕 Regra do Escoteiro
+---
+
+## 🏕 Regra do Escoteiro
 
 > Deixe o código um pouco melhor do que você encontrou.
 
@@ -180,7 +182,7 @@ Pequenas melhorias constantes evitam degradação do sistema.
 
 ---
 
-🎯 Conclusão
+## 🎯 Conclusão
 
 Este capítulo ensina principalmente mentalidade profissional:
 
@@ -188,3 +190,4 @@ Este capítulo ensina principalmente mentalidade profissional:
 - Código sujo cobra juros.
 - Velocidade real vem da clareza.
 - Disciplina supera improviso.
+

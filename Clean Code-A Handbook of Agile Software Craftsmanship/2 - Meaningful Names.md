@@ -41,13 +41,13 @@ Não use nomes que confundem:
 - AccountList quando é um array
 - l (letra L) confundindo com 1
 
-❌ Código ruim
+### ❌ Código ruim
 
 ```csharp
 var accountList = new Account[10];
 ```
 
-✅ Código melhor
+### ✅ Código melhor
 
 ```csharp
 var accounts = new Account[10];
@@ -63,14 +63,14 @@ Evite nomes como:
 
 Eles não comunicam diferença real.
 
-❌ Código ruim
+### ❌ Código ruim
 
 ```csharp
 public class CustomerData { }
 public class CustomerInfo { }
 ```
 
-✅ Código melhor
+### ✅ Código melhor
 
 ```csharp
 public class CustomerProfile { }
@@ -83,13 +83,13 @@ Agora a diferença é clara.
 
 Se você não consegue falar o nome, ele é ruim.
 
-❌ Código ruim
+### ❌ Código ruim
 
 ```csharp
 int genymdhms;
 ```
 
-✅ Código melhor
+### ✅ Código melhor
 
 ```csharp
 int generationTimestamp;
@@ -101,13 +101,13 @@ Código precisa ser discutido verbalmente.
 
 Evite números mágicos.
 
-❌ Código ruim
+### ❌ Código ruim
 
 ```csharp
 if (status == 4)
 ```
 
-✅ Código melhor
+### ✅ Código melhor
 
 ```csharp
 const int StatusApproved = 4;
@@ -130,13 +130,13 @@ public enum OrderStatus
 
 Evite notação húngara e prefixos redundantes.
 
-❌ Código ruim
+### ❌ Código ruim
 
 ```csharp
 string strName;
 ```
 
-✅ Código melhor
+### ✅ Código melhor
 
 ```csharp
 string name;
@@ -148,13 +148,13 @@ O tipo já está claro no contexto.
 
 Não force o leitor a decodificar abreviações.
 
-❌ Código ruim
+### ❌ Código ruim
 
 ```csharp
 var usr = GetUsr();
 ```
 
-✅ Código melhor
+### ✅ Código melhor
 
 ```csharp
 var user = GetUser();
@@ -175,13 +175,13 @@ Evite:
 - Info
 - Utils
 
-❌ Código ruim
+### ❌ Código ruim
 
 ```csharp
 public class OrderManager { }
 ```
 
-✅ Código melhor
+### ✅ Código melhor
 
 ```csharp
 public class OrderProcessor { }
@@ -195,13 +195,13 @@ Métodos devem ser verbos:
 - SaveUser()
 - SendEmail()
 
-❌ Código ruim
+### ❌ Código ruim
 
 ```csharp
 public void UserData() { }
 ```
 
-✅ Código melhor
+### ✅ Código melhor
 
 ```csharp
 public void SaveUser() { }
@@ -220,13 +220,13 @@ Consistência reduz carga cognitiva.
 
 Prefira termos do negócio.
 
-❌ Código ruim
+### ❌ Código ruim
 
 ```csharp
 public class Processor { }
 ```
 
-✅ Código melhor
+### ✅ Código melhor
 
 ```csharp
 public class PaymentProcessor { }
@@ -243,7 +243,7 @@ public class PixPaymentProcessor { }
 Se um nome precisa de comentário para explicar,
 o nome está errado.
 
-🎯 Conclusão
+## 🎯 Conclusão
 
 Este capítulo ensina que:
 

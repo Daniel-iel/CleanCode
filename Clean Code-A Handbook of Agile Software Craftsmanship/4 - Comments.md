@@ -41,7 +41,7 @@ Problema:
 
 ---
 
-✅ Código Autoexplicativo
+### ✅ Código Autoexplicativo
 
 ```csharp
 if (user.IsActive())
@@ -92,10 +92,11 @@ Aqui o comentário explica um motivo não óbvio.
 ```csharp
 // Incrementa contador
 count++;
+```
 
 Comentário inútil.
 
-❌ Comentários Enganosos
+### ❌ Comentários Enganosos
 
 ```csharp
 // Retorna lista vazia se não houver usuários
@@ -104,7 +105,7 @@ return null;
 
 Comentário mente. Código faz outra coisa.
 
-❌ Código Comentado
+### ❌ Código Comentado
 
 ```csharp
 // var total = CalculateOldWay(order);
@@ -114,7 +115,7 @@ var total = CalculateNewWay(order);
 Código morto deve ser removido.
 Controle de versão já guarda histórico.
 
-❌ Comentários em Bloco Excessivos
+### ❌ Comentários em Bloco Excessivos
 
 ```csharp
 /*

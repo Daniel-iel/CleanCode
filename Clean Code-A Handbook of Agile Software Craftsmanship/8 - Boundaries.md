@@ -48,18 +48,23 @@ public void Should_Create_List_With_Three_Items()
 Você aprende como a API funciona
 sem contaminar o sistema principal.
 
-📦 2. Encapsule Bibliotecas Externas
+## 📦 2. Encapsule Bibliotecas Externas
 
 Nunca espalhe chamadas externas pelo código.
 
-❌ Uso direto da biblioteca
+### ❌ Uso direto da biblioteca
+
+```csharp
 var client = new HttpClient();
 var response = await client.GetAsync(url);
+```
 
 Se mudar a biblioteca,
 o sistema inteiro é impactado.
 
-✅ Encapsulando
+### ✅ Encapsulando
+
+```csharp
 public interface IHttpService
 {
     Task<string> GetAsync(string url);
@@ -75,20 +80,26 @@ public class HttpService : IHttpService
         return await response.Content.ReadAsStringAsync();
     }
 }
+```
 
 Agora apenas uma classe depende da biblioteca.
 
-🔁 3. Anti-Corruption Layer
+## 🔁 3. Anti-Corruption Layer
 
 Crie uma camada que traduza:
 
-Estruturas externas
+- Estruturas externas
+- Para modelos internos
 
-Para modelos internos
+### ❌ Acoplamento direto ao modelo externo
 
-❌ Acoplamento direto ao modelo externo
+```csharp
 public void Process(ExternalUser externalUser)
-✅ Tradução para modelo interno
+```
+
+### ✅ Tradução para modelo interno
+
+```csharp
 public class UserMapper
 {
     public User Map(ExternalUser external)
@@ -96,16 +107,23 @@ public class UserMapper
         return new User(external.Name, external.Email);
     }
 }
+```
 
 Agora o domínio não depende da estrutura externa.
 
-🧩 4. Interfaces Protegem Seu Sistema
+## 🧩 4. Interfaces Protegem Seu Sistema
 
 Prefira depender de abstrações.
 
-❌
+### ❌
+
+```csharp
 var repository = new SqlUserRepository();
-✅
+```
+
+### ✅
+
+```csharp
 public class UserService
 {
     private readonly IUserRepository _repository;
@@ -115,11 +133,12 @@ public class UserService
         _repository = repository;
     }
 }
+```
 
 Se trocar banco de dados,
 o domínio continua intacto.
 
-⚖️ 5. Código em Fronteira é Volátil
+## ⚖️ 5. Código em Fronteira é Volátil
 
 Bibliotecas externas mudam.
 
@@ -127,35 +146,28 @@ Seu domínio não deveria mudar por isso.
 
 Isolamento reduz impacto.
 
-🔬 6. Testes de Fronteira
+## 🔬 6. Testes de Fronteira
 
 Teste sua integração separadamente.
 
 Não misture testes de domínio com testes de biblioteca.
 
-🏕 Regra Prática
+## 🏕 Regra Prática
 
-Nunca espalhe dependências externas.
+- Nunca espalhe dependências externas.
+- Sempre encapsule APIs.
+- Traduza modelos externos.
+- Dependa de interfaces.
+- Mantenha o domínio limpo.
 
-Sempre encapsule APIs.
-
-Traduza modelos externos.
-
-Dependa de interfaces.
-
-Mantenha o domínio limpo.
-
-🎯 Conclusão
+## 🎯 Conclusão
 
 Este capítulo ensina que:
 
-Dependências externas devem ser isoladas.
-
-Encapsulamento protege o domínio.
-
-Interfaces reduzem acoplamento.
-
-Fronteiras são pontos estratégicos do design.
+- Dependências externas devem ser isoladas.
+- Encapsulamento protege o domínio.
+- Interfaces reduzem acoplamento.
+- Fronteiras são pontos estratégicos do design.
 
 Código limpo não evita dependências —
 ele as controla.

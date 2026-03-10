@@ -111,7 +111,7 @@ public void SaveUser(User user)
 
 Evite misturar alto nível com baixo nível.
 
-❌ Código com múltiplos níveis
+### ❌ Código com múltiplos níveis
 
 ```csharp
 public void GenerateReport()
@@ -122,7 +122,7 @@ public void GenerateReport()
 }
 ```
 
-✅ Código melhor
+### ✅ Código melhor
 
 ```csharp
 public void GenerateReport()
@@ -146,13 +146,13 @@ Ideal:
 - 2 argumentos → aceitável
 - 3+ argumentos → problema
 
-❌ Código com muitos argumentos
+### ❌ Código com muitos argumentos
 
 ```csharp
 public void CreateUser(string name, string email, string phone, bool isAdmin)
 ```
 
-✅ Código melhor
+### ✅ Código melhor
 
 ```csharp
 public void CreateUser(User user)
@@ -164,13 +164,13 @@ Ou use um objeto de configuração.
 
 Boolean indica que a função faz mais de uma coisa.
 
-❌ Código com flag booleana
+### ❌ Código com flag booleana
 
 ```csharp
 public void GenerateReport(bool isDetailed)
 ```
 
-✅ Código melhor
+### ✅ Código melhor
 
 ```csharp
 public void GenerateDetailedReport()
@@ -183,7 +183,7 @@ Agora a intenção é clara.
 
 Funções devem fazer apenas o que prometem.
 
-❌ Código com efeitos colaterais
+### ❌ Código com efeitos colaterais
 
 ```csharp
 public bool Authenticate(string username, string password)
@@ -195,7 +195,7 @@ public bool Authenticate(string username, string password)
 
 Além de autenticar, altera estado global.
 
-✅ Código melhor
+### ✅ Código melhor
 
 ```csharp
 public User Authenticate(string username, string password)
@@ -215,7 +215,7 @@ Sem efeitos escondidos.
 
 Duplicação aumenta bugs.
 
-❌ Código duplicado
+### ❌ Código duplicado
 
 ```csharp
 if (user == null)
@@ -224,7 +224,7 @@ if (user == null)
 // Repetido em vários métodos.
 ```
 
-✅ Código melhor
+### ✅ Código melhor
 
 ```csharp
 private void Validate(User user)

@@ -57,7 +57,8 @@ Calculate(order);
 Save(order);
 }}
 ```
-✅ Código organizado
+
+## ✅ Código organizado
 
 ```csharp
 public class OrderService
@@ -77,13 +78,11 @@ Espaçamento comunica estrutura.
 
 Leitura deve fluir de cima para baixo.
 
-Funções públicas primeiro
+1. Funções públicas primeiro
+2. Funções privadas abaixo
+3. Nível mais alto primeiro
 
-Funções privadas abaixo
-
-Nível mais alto primeiro
-
-✅ Estrutura Recomendada
+### ✅ Estrutura Recomendada
 
 ```csharp
 public class ReportService
@@ -111,13 +110,13 @@ Linhas não devem ser muito longas.
 
 Ideal: até ~120 caracteres.
 
-❌ Código com linha longa
+### ❌ Código com linha longa
 
 ```csharp
 var result = repository.GetUsers().Where(u => u.IsActive && u.Age > 18 && u.Country == "BR").OrderBy(u => u.Name).ToList();
 ```
 
-✅ Código melhor
+### ✅ Código melhor
 
 ```csharp
 var result = repository
@@ -133,7 +132,7 @@ Melhor leitura.
 
 Indentação mostra hierarquia.
 
-❌ Sem indentação clara
+### ❌ Sem indentação clara
 
 ```csharp
 if(user.IsActive){
@@ -142,7 +141,7 @@ GrantAccess();
 }}
 ```
 
-✅ Com indentação
+### ✅ Com indentação
 
 ```csharp
 if (user.IsActive)
@@ -158,7 +157,7 @@ if (user.IsActive)
 
 Evite alinhar código manualmente com espaços.
 
-❌ Código com alinhamento manual
+### ❌ Código com alinhamento manual
 
 ```csharp
 int    age   = 30;
@@ -168,7 +167,7 @@ double total = 150.5;
 
 Alinhamento manual é frágil.
 
-✅ Código melhor
+### ✅ Código melhor
 
 ```csharp
 int age = 30;
@@ -182,11 +181,9 @@ Simples e consistente.
 
 Consistência > estilo específico.
 
-Mesmo padrão de chaves
-
-Mesmo padrão de espaçamento
-
-Mesmo padrão de organização
+- Mesmo padrão de chaves
+- Mesmo padrão de espaçamento
+- Mesmo padrão de organização
 
 Times devem ter padrão definido.
 
@@ -196,25 +193,19 @@ Código é como prosa.
 
 Boa formatação:
 
-Facilita leitura
-
-Reduz erros
-
-Demonstra cuidado
+- Facilita leitura
+- Reduz erros
+- Demonstra cuidado
 
 ## 🎯 Conclusão
 
 Este capítulo ensina que:
 
-Formatação é comunicação.
-
-Organização visual importa.
-
-Arquivos devem ser pequenos.
-
-Código deve ser organizado vertical e horizontalmente.
-
-Consistência é mais importante que preferência pessoal.
+- Formatação é comunicação.
+- Organização visual importa.
+- Arquivos devem ser pequenos.
+- Código deve ser organizado vertical e horizontalmente.
+- Consistência é mais importante que preferência pessoal.
 
 Código limpo não é apenas o que ele faz —
 é como ele se apresenta.
