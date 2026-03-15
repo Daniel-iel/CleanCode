@@ -27,16 +27,20 @@ No xUnit, um teste é simplesmente um método marcado com o atributo
 \[Fact\].
 
 Exemplo:
+```csharp
+public class CalculatorTests 
+{ 
+        \[Fact\] 
+        public void Should_Add_Two_Numbers() 
+        { 
+                var calculator = new Calculator();
 
-public class CalculatorTests { \[Fact\] public void
-Should_Add_Two_Numbers() { var calculator = new Calculator();
+                var result = calculator.Add(2, 3);
 
-        var result = calculator.Add(2, 3);
-
-        Assert.Equal(5, result);
+                Assert.Equal(5, result);
     }
-
 }
+```
 
 Características importantes:
 
@@ -94,6 +98,7 @@ As assertions validam o comportamento esperado.
 
 Exemplo:
 
+```csharp
 Assert.Equal(expected, actual)
 
 Outras assertions comuns:
@@ -102,6 +107,7 @@ Assert.True(condition)\
 Assert.False(condition)\
 Assert.NotNull(object)\
 Assert.Throws`<Exception>`{=html}()
+```
 
 Essas APIs são simples e altamente expressivas.
 
@@ -113,15 +119,17 @@ O xUnit permite compartilhar contexto entre testes usando Fixtures.
 
 Exemplo:
 
-public class DatabaseFixture { public DatabaseConnection Connection {
-get; }
+```csharp
+public class DatabaseFixture 
+{ 
+        public DatabaseConnection Connection { get; }
 
-    public DatabaseFixture()
-    {
-        Connection = new DatabaseConnection();
-    }
-
+       public DatabaseFixture()
+       {
+         Connection = new DatabaseConnection();
+       }
 }
+```
 
 Uso da fixture:
 
