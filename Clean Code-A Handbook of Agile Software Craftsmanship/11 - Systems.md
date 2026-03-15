@@ -99,7 +99,7 @@ public interface IUserRepository
     User Find(int id);
     void Save(User user);
 }
-
+```
 O domínio depende da interface,
 não da implementação concreta.
 
